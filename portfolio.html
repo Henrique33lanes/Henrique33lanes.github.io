@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de João Henrique — programador e criador de conteúdo especializado em IA generativa e design de produto.">
+    <title>João Henrique — Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2234;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --text-faint: #64748b;
+            --border: #2a3a4a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            padding: 0 2rem 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 15, 26, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            padding: 0.4rem 0.6rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(99,102,241,0.35), transparent 65%);
+            animation: pulse 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-hover);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 520px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent-hover);
+        }
+
+        .btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Sections */
+        section {
+            padding: 5.5rem 2rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 800px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Tag list */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            padding: 0.5rem 0.9rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        /* Portfolio projects */
+        .project-actions {
+            margin-top: 1.25rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: var(--text-faint);
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 0.75rem 0 0;
+        }
+
+        .project-meta span {
+            padding: 0.2rem 0.6rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+        }
+
+        .link-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--accent-hover);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .link-btn:hover {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Generator */
+        .generator {
+            background: linear-gradient(160deg, #0f172a, #1a1440);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.25rem;
+        }
+
+        .generator-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .generator h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .generator-top p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            max-width: 420px;
+            margin-top: 0.35rem;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.45rem;
+            font-weight: 500;
+        }
+
+        .generator-input,
+        .generator-select,
+        textarea.generator-input {
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .generator-input:focus,
+        .generator-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .field-group { margin-bottom: 1.25rem; }
+
+        .generator-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .choice-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .choice-group input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .choice-group label {
+            padding: 0.5rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .choice-group input:checked + label {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-hover);
+        }
+
+        .generator-footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .generator-status {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 1.2rem;
+        }
+
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+
+        .generator-result {
+            margin-top: 1.75rem;
+        }
+
+        .generator-result img {
+            max-width: 100%;
+            display: block;
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+        }
+
+        .generator-result-actions {
+            margin-top: 0.9rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .generator-error {
+            color: #fca5a5;
+            padding: 0.9rem 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 10px;
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .generator-note {
+            font-size: 0.78rem;
+            color: var(--text-faint);
+            margin-top: 1.25rem;
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--text-faint);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 700px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: inline-flex; }
+            .nav-links.open {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+            section { padding: 4rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#hero" class="logo">João Henrique</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#generator">Gerador IA</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Disponível para projetos e colaborações</div>
+            <h1>João Henrique</h1>
+            <p>Programador e criador de conteúdo digital focado em IA generativa, produtos web e design de interface.</p>
+            <div class="hero-actions">
+                <a href="#generator" class="btn btn-primary">Testar gerador de imagens</a>
+                <a href="#projects" class="btn btn-secondary">Ver projetos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title">Sobre mim</h2>
+            <p class="section-subtitle">Combinando conhecimento técnico com criatividade aplicada a produtos de IA</p>
+        </div>
+        <div class="container about-grid">
+            <div class="card">
+                <h3>Quem sou</h3>
+                <p style="margin-bottom: 0.9rem;">Sou estudante e desenvolvedor dedicado a unir programação, inteligência artificial e design. Minha jornada passa por desenvolvimento de software, experimentação com modelos de IA generativa e criação de conteúdo visual.</p>
+                <p>Tenho foco em <strong>aplicar IA de forma ética e prática</strong>, construindo soluções que melhoram a experiência de quem usa.</p>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom: 1rem;">Com o que eu trabalho</h3>
+                <p style="margin-bottom: 1.25rem;">Sem tentar colocar um número em cima disso — só o que uso de fato no dia a dia.</p>
+                <div class="tag-list">
+                    <span class="tag">Python</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">IA / Machine Learning</span>
+                    <span class="tag">UI / UX Design</span>
+                    <span class="tag">Backend / APIs</span>
+                    <span class="tag">Prompt Engineering</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" style="background: var(--bg-secondary);">
+        <div class="section-header">
+            <h2 class="section-title">Habilidades técnicas</h2>
+            <p class="section-subtitle">Competências que me permitem entregar resultados de qualidade</p>
+        </div>
+        <div class="container grid-2col">
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #6366f1, #a855f7);">💻</div>
+                <h3>Linguagens</h3>
+                <p>Python, JavaScript, TypeScript, SQL, Go</p>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🤖</div>
+                <h3>Inteligência Artificial</h3>
+                <p>LLMs, geração de imagem (Flux, Stable Diffusion), prompt engineering</p>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🎨</div>
+                <h3>Design de produto</h3>
+                <p>Figma, Adobe XD, prototipagem, UX/UI</p>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">🌐</div>
+                <h3>Backend</h3>
+                <p>Node.js, Django, APIs REST, bancos de dados</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Projetos</h2>
+            <p class="section-subtitle">Trabalhos recentes e projetos pessoais</p>
+        </div>
+        <div class="container grid-2col">
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #6366f1, #a855f7);">🎨</div>
+                <h3>Gerador de Imagens com IA</h3>
+                <p>Ferramenta de geração de arte via API, permitindo criar imagens personalizadas a partir de descrições em texto.</p>
+                <div class="project-meta">
+                    <span>Pollinations API</span>
+                    <span>JavaScript</span>
+                    <span>2026</span>
+                </div>
+                <div class="project-actions">
+                    <a href="#generator" class="link-btn">Abrir gerador →</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🚀</div>
+                <h3>Plataforma de Aprendizado de IA</h3>
+                <p>Aplicação web interativa para explorar modelos de linguagem, com interface moderna e responsiva.</p>
+                <div class="project-meta">
+                    <span>React</span>
+                    <span>Tailwind</span>
+                    <span>Em desenvolvimento</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generator Section -->
+    <section id="generator" style="background: var(--bg-secondary);">
+        <div class="section-header">
+            <h2 class="section-title">Gerador de imagens com IA</h2>
+            <p class="section-subtitle">Descreva uma cena ou personagem e gere uma imagem na hora</p>
+        </div>
+        <div class="container">
+            <div class="generator">
+                <div class="generator-top">
+                    <div>
+                        <h3>Novo prompt</h3>
+                        <p>Powered by Pollinations.ai — sem necessidade de chave de API.</p>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="character-prompt">Descrição da imagem</label>
+                    <textarea id="character-prompt" class="generator-input" rows="3" placeholder="Ex: guerreira élfica com armadura dourada, floresta enevoada ao fundo"></textarea>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="negative-prompt">O que evitar (opcional)</label>
+                    <input id="negative-prompt" class="generator-input" type="text" placeholder="Ex: baixa qualidade, texto, marca d'água">
+                </div>
+
+                <div class="generator-row">
+                    <div>
+                        <label class="field-label" for="quality">Qualidade</label>
+                        <select id="quality" class="generator-select">
+                            <option value="768">Padrão (768px)</option>
+                            <option value="1024" selected>Alta (1024px)</option>
+                            <option value="1280">Máxima (1280px)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="field-label">Proporção</span>
+                        <div class="choice-group" id="ratio-group">
+                            <input type="radio" name="ratio" id="ratio-1-1" value="1:1" checked>
+                            <label for="ratio-1-1">1:1</label>
+                            <input type="radio" name="ratio" id="ratio-16-9" value="16:9">
+                            <label for="ratio-16-9">16:9</label>
+                            <input type="radio" name="ratio" id="ratio-9-16" value="9:16">
+                            <label for="ratio-9-16">9:16</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <span class="field-label">Estilo</span>
+                    <div class="choice-group" id="style-group">
+                        <input type="radio" name="style" id="style-none" value="" checked>
+                        <label for="style-none">Nenhum</label>
+                        <input type="radio" name="style" id="style-anime" value="anime90s">
+                        <label for="style-anime">Anime 90s</label>
+                        <input type="radio" name="style" id="style-chibi" value="chibi">
+                        <label for="style-chibi">Chibi</label>
+                        <input type="radio" name="style" id="style-manga" value="manga">
+                        <label for="style-manga">Mangá</label>
+                        <input type="radio" name="style" id="style-western" value="western">
+                        <label for="style-western">Cartoon ocidental</label>
+                        <input type="radio" name="style" id="style-3d" value="3d">
+                        <label for="style-3d">3D</label>
+                    </div>
+                </div>
+
+                <div class="generator-footer">
+                    <button id="generate-image" class="btn btn-primary" type="button">Gerar imagem</button>
+                    <div class="generator-status">
+                        <span class="spinner" id="generatorSpinner"></span>
+                        <span id="generatorStatusText"></span>
+                    </div>
+                </div>
+
+                <div class="generator-error" id="generatorError"></div>
+
+                <div class="generator-result" id="image-display"></div>
+
+                <p class="generator-note">A geração usa a API pública e gratuita da Pollinations.ai. Em uso anônimo, o limite é de cerca de 1 imagem a cada 15 segundos, e a imagem pode conter uma pequena marca d'água.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Contato</h2>
+            <p class="section-subtitle">Entre em contato para colaborações ou consultoria</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" name="name" required placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Como posso ajudar?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar mensagem</button>
+            <p class="form-note">Este formulário ainda não está conectado a um backend — a próxima etapa do projeto é ligar isso a um serviço de e-mail (ex: Formspree) ou a uma API própria.</p>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 João Henrique — Todos os direitos reservados. Projeto pessoal em construção.</p>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // Style map for the generator
+        const styleMap = {
+            anime90s: 'estilo anime dos anos 90, cores vibrantes, poses dinâmicas',
+            chibi: 'estilo chibi, fofo, traços exagerados',
+            manga: 'estilo mangá em preto e branco, traço detalhado',
+            western: 'estilo cartoon ocidental 2D, contornos marcados',
+            '3d': 'render 3D, CGI, iluminação realista'
+        };
+
+        const generateBtn = document.getElementById('generate-image');
+        const statusText = document.getElementById('generatorStatusText');
+        const spinner = document.getElementById('generatorSpinner');
+        const errorBox = document.getElementById('generatorError');
+        const resultBox = document.getElementById('image-display');
+
+        function setLoading(isLoading, message) {
+            generateBtn.disabled = isLoading;
+            spinner.style.display = isLoading ? 'inline-block' : 'none';
+            statusText.textContent = message || '';
+        }
+
+        function showError(message) {
+            errorBox.textContent = message;
+            errorBox.style.display = 'block';
+        }
+
+        function hideError() {
+            errorBox.style.display = 'none';
+            errorBox.textContent = '';
+        }
+
+        generateBtn.addEventListener('click', () => {
+            hideError();
+            resultBox.innerHTML = '';
+
+            const characterPrompt = document.getElementById('character-prompt').value.trim();
+            const negativePrompt = document.getElementById('negative-prompt').value.trim();
+            const quality = parseInt(document.getElementById('quality').value, 10);
+            const ratio = document.querySelector('input[name="ratio"]:checked')?.value || '1:1';
+            const style = document.querySelector('input[name="style"]:checked')?.value || '';
+
+            if (!characterPrompt) {
+                showError('Descreva a imagem que você quer gerar antes de continuar.');
+                return;
+            }
+
+            // Build the final prompt
+            let fullPrompt = characterPrompt;
+            if (style && styleMap[style]) {
+                fullPrompt += ', ' + styleMap[style];
+            }
+            if (negativePrompt) {
+                fullPrompt += '. Evitar: ' + negativePrompt;
+            }
+
+            // Resolve width/height from the chosen aspect ratio and quality level
+            const [ratioW, ratioH] = ratio.split(':').map(Number);
+            let width, height;
+            if (ratioW >= ratioH) {
+                width = quality;
+                height = Math.round((quality * ratioH) / ratioW);
+            } else {
+                height = quality;
+                width = Math.round((quality * ratioW) / ratioH);
+            }
+
+            const seed = Math.floor(Math.random() * 1000000);
+            const params = new URLSearchParams({
+                width: String(width),
+                height: String(height),
+                seed: String(seed),
+                nologo: 'true',
+                model: 'flux'
+            });
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(fullPrompt)}?${params.toString()}`;
+
+            setLoading(true, 'Gerando imagem, isso pode levar alguns segundos...');
+
+            const img = new Image();
+            img.onload = () => {
+                setLoading(false, 'Imagem gerada com sucesso.');
+                resultBox.innerHTML = '';
+                const wrapper = document.createElement('div');
+                const finalImg = document.createElement('img');
+                finalImg.src = imageUrl;
+                finalImg.alt = fullPrompt;
+                wrapper.appendChild(finalImg);
+
+                const actions = document.createElement('div');
+                actions.className = 'generator-result-actions';
+                const downloadLink = document.createElement('a');
+                downloadLink.href = imageUrl;
+                downloadLink.target = '_blank';
+                downloadLink.rel = 'noopener';
+                downloadLink.className = 'btn btn-secondary';
+                downloadLink.textContent = 'Abrir em nova aba';
+                actions.appendChild(downloadLink);
+                wrapper.appendChild(actions);
+
+                resultBox.appendChild(wrapper);
+            };
+            img.onerror = () => {
+                setLoading(false, '');
+                showError('Não foi possível gerar a imagem agora. Isso costuma acontecer quando o limite de requisições é atingido — espere alguns segundos e tente novamente.');
+            };
+            img.src = imageUrl;
+        });
+
+        // Contact form (front-end only for now)
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Mensagem pronta para envio! (o backend ainda não está conectado — próximo passo do projeto)');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
